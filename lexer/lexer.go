@@ -58,13 +58,13 @@ func (l *Lexer) NextToken() token.Token {
 	case ':':
 		tok = newToken(token.COLON, l.ch)
 	case '{':
-		tok = newToken(token.LBRACE, l.ch)
+		tok = newToken(token.LEFT_BRACE, l.ch)
 	case '}':
 		tok = newToken(token.RBRACE, l.ch)
 	case '(':
-		tok = newToken(token.LPAREN, l.ch)
+		tok = newToken(token.LEFT_PARENTHESIS, l.ch)
 	case ')':
-		tok = newToken(token.RPAREN, l.ch)
+		tok = newToken(token.RIGHT_PARENTHESIS, l.ch)
 	case '[':
 		tok = newToken(token.LBRACKET, l.ch)
 	case ']':

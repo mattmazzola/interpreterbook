@@ -286,7 +286,7 @@ func evalIdentifier(
 		return val
 	}
 
-	if builtin, ok := builtins[node.Value]; ok {
+	if builtin, ok := builtinFnNameToImplementation[node.Value]; ok {
 		return builtin
 	}
 

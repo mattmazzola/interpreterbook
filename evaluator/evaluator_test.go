@@ -67,7 +67,7 @@ func TestEvalBooleanExpression(t *testing.T) {
 	}
 }
 
-func TestBangOperator(t *testing.T) {
+func TestEvalBangOperator(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected bool
@@ -86,7 +86,7 @@ func TestBangOperator(t *testing.T) {
 	}
 }
 
-func TestIfElseExpressions(t *testing.T) {
+func TestEvalIfElseExpressions(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}
@@ -111,7 +111,7 @@ func TestIfElseExpressions(t *testing.T) {
 	}
 }
 
-func TestReturnStatements(t *testing.T) {
+func TestEvalReturnStatements(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected int64
@@ -160,7 +160,7 @@ f(10);`,
 	}
 }
 
-func TestErrorHandling(t *testing.T) {
+func TestEvalErrorHandling(t *testing.T) {
 	tests := []struct {
 		input           string
 		expectedMessage string
@@ -236,7 +236,7 @@ if (10 > 1) {
 	}
 }
 
-func TestLetStatements(t *testing.T) {
+func TestEvalLetStatements(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected int64
@@ -252,7 +252,7 @@ func TestLetStatements(t *testing.T) {
 	}
 }
 
-func TestFunctionObject(t *testing.T) {
+func TestEvalFunctionObject(t *testing.T) {
 	input := "fn(x) { x + 2; };"
 
 	evaluated := testEval(input)
@@ -277,7 +277,7 @@ func TestFunctionObject(t *testing.T) {
 	}
 }
 
-func TestFunctionApplication(t *testing.T) {
+func TestEvalFunctionApplication(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected int64
@@ -295,7 +295,7 @@ func TestFunctionApplication(t *testing.T) {
 	}
 }
 
-func TestEnclosingEnvironments(t *testing.T) {
+func TestEvalEnclosingEnvironments(t *testing.T) {
 	input := `
 let first = 10;
 let second = 10;
@@ -312,7 +312,7 @@ ourFunction(20) + first + second;`
 	testIntegerObject(t, testEval(input), 70)
 }
 
-func TestStringLiteral(t *testing.T) {
+func TestEvalStringLiteral(t *testing.T) {
 	input := `"Hello World!"`
 
 	evaluated := testEval(input)
@@ -326,7 +326,7 @@ func TestStringLiteral(t *testing.T) {
 	}
 }
 
-func TestStringConcatenation(t *testing.T) {
+func TestEvalStringConcatenation(t *testing.T) {
 	input := `"Hello" + " " + "World!"`
 
 	evaluated := testEval(input)
@@ -340,7 +340,7 @@ func TestStringConcatenation(t *testing.T) {
 	}
 }
 
-func TestBuiltinFunctions(t *testing.T) {
+func TestEvalBuiltinFunctions(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}
@@ -373,7 +373,7 @@ func TestBuiltinFunctions(t *testing.T) {
 	}
 }
 
-func TestArrayLiterals(t *testing.T) {
+func TestEvalArrayLiterals(t *testing.T) {
 	input := "[1, 2 * 2, 3 + 3]"
 
 	evaluated := testEval(input)
@@ -392,7 +392,7 @@ func TestArrayLiterals(t *testing.T) {
 	testIntegerObject(t, result.Elements[2], 6)
 }
 
-func TestArrayIndexExpressions(t *testing.T) {
+func TestEvalArrayIndexExpressions(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}
@@ -450,7 +450,7 @@ func TestArrayIndexExpressions(t *testing.T) {
 	}
 }
 
-func TestHashLiterals(t *testing.T) {
+func TestEvalHashLiterals(t *testing.T) {
 	input := `let two = "two";
     {
         "one": 10 - 9,
@@ -490,7 +490,7 @@ func TestHashLiterals(t *testing.T) {
 	}
 }
 
-func TestHashIndexExpressions(t *testing.T) {
+func TestEvalHashIndexExpressions(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected interface{}

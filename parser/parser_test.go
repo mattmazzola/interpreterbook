@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestLetStatements(t *testing.T) {
+func TestParsingLetStatements(t *testing.T) {
 	tests := []struct {
 		input              string
 		expectedIdentifier string
@@ -41,7 +41,7 @@ func TestLetStatements(t *testing.T) {
 	}
 }
 
-func TestReturnStatements(t *testing.T) {
+func TestParsingReturnStatements(t *testing.T) {
 	tests := []struct {
 		input         string
 		expectedValue interface{}
@@ -77,7 +77,7 @@ func TestReturnStatements(t *testing.T) {
 	}
 }
 
-func TestIdentifierExpression(t *testing.T) {
+func TestParsingIdentifierExpressions(t *testing.T) {
 	input := "foobar;"
 
 	l := lexer.New(input)
@@ -108,7 +108,7 @@ func TestIdentifierExpression(t *testing.T) {
 	}
 }
 
-func TestIntegerLiteralExpression(t *testing.T) {
+func TestParsingIntegerLiteralExpressions(t *testing.T) {
 	input := "5;"
 
 	l := lexer.New(input)
@@ -236,7 +236,7 @@ func TestParsingInfixExpressions(t *testing.T) {
 	}
 }
 
-func TestOperatorPrecedenceParsing(t *testing.T) {
+func TestParsingGroupsBasedOnOperatorPrecedence(t *testing.T) {
 	tests := []struct {
 		input    string
 		expected string
@@ -364,7 +364,7 @@ func TestOperatorPrecedenceParsing(t *testing.T) {
 	}
 }
 
-func TestBooleanExpression(t *testing.T) {
+func TestParsingBooleanExpressions(t *testing.T) {
 	tests := []struct {
 		input           string
 		expectedBoolean bool
@@ -401,7 +401,7 @@ func TestBooleanExpression(t *testing.T) {
 	}
 }
 
-func TestIfExpression(t *testing.T) {
+func TestParsingIfExpressions(t *testing.T) {
 	input := `if (x < y) { x }`
 
 	l := lexer.New(input)
@@ -450,7 +450,7 @@ func TestIfExpression(t *testing.T) {
 	}
 }
 
-func TestIfElseExpression(t *testing.T) {
+func TestParsingIfElseExpressions(t *testing.T) {
 	input := `if (x < y) { x } else { y }`
 
 	l := lexer.New(input)
@@ -509,7 +509,7 @@ func TestIfElseExpression(t *testing.T) {
 	}
 }
 
-func TestFunctionLiteralParsing(t *testing.T) {
+func TestParsingFunctionLiterals(t *testing.T) {
 	input := `fn(x, y) { x + y; }`
 
 	l := lexer.New(input)
@@ -556,7 +556,7 @@ func TestFunctionLiteralParsing(t *testing.T) {
 	testInfixExpression(t, bodyStmt.Expression, "x", "+", "y")
 }
 
-func TestFunctionParameterParsing(t *testing.T) {
+func TestParsingFunctionParameters(t *testing.T) {
 	tests := []struct {
 		input          string
 		expectedParams []string
@@ -586,7 +586,7 @@ func TestFunctionParameterParsing(t *testing.T) {
 	}
 }
 
-func TestCallExpressionParsing(t *testing.T) {
+func TestParsingCallExpressions(t *testing.T) {
 	input := "add(1, 2 * 3, 4 + 5);"
 
 	l := lexer.New(input)
@@ -624,7 +624,7 @@ func TestCallExpressionParsing(t *testing.T) {
 	testInfixExpression(t, exp.Arguments[2], 4, "+", 5)
 }
 
-func TestCallExpressionParameterParsing(t *testing.T) {
+func TestParsingCallExpressionParameters(t *testing.T) {
 	tests := []struct {
 		input         string
 		expectedIdent string
@@ -678,7 +678,7 @@ func TestCallExpressionParameterParsing(t *testing.T) {
 	}
 }
 
-func TestStringLiteralExpression(t *testing.T) {
+func TestParsingStringLiteralExpression(t *testing.T) {
 	input := `"hello world";`
 
 	l := lexer.New(input)

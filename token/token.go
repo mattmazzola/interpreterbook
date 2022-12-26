@@ -7,9 +7,9 @@ const (
 	EOF     = "EOF"
 
 	// Identifiers + literals
-	IDENT  = "IDENT" // add, foobar, x, y, ...
-	INT    = "INT"   // 1343456
-	STRING = "STRING"
+	IDENTIFIER = "IDENT" // add, foobar, x, y, ...
+	INT        = "INT"   // 1343456
+	STRING     = "STRING"
 
 	// Operators
 	ASSIGN   = "="
@@ -30,12 +30,12 @@ const (
 	SEMICOLON = ";"
 	COLON     = ":"
 
-	LPAREN   = "("
-	RPAREN   = ")"
-	LBRACE   = "{"
-	RBRACE   = "}"
-	LBRACKET = "["
-	RBRACKET = "]"
+	LEFT_PARENTHESIS  = "("
+	RIGHT_PARENTHESIS = ")"
+	LEFT_BRACE        = "{"
+	RBRACE            = "}"
+	LBRACKET          = "["
+	RBRACKET          = "]"
 
 	// Keywords
 	FUNCTION = "FUNCTION"
@@ -66,5 +66,5 @@ func GetTypeOfIdentifier(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok
 	}
-	return IDENT
+	return IDENTIFIER
 }
