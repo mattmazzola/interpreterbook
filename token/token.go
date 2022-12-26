@@ -62,7 +62,7 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
-func LookupIdent(ident string) TokenType {
+func GetTypeOfIdentifier(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok
 	}
